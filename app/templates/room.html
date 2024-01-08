@@ -1,6 +1,6 @@
 {% extends 'layout/base.html' %}
 
-{% block title %}Trang chủ{% endblock %}
+{% block title %}ROOM{% endblock %}
 <link href="style.css" rel="stylesheet"/>
 {% block content %}
 <style>
@@ -314,13 +314,13 @@
                             <div class="row g-2">
                                 <div class="col-md-3">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input"
+                                        <input type="date" class="form-control datetimepicker-input"
                                             placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="date" id="date2" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
+                                        <input type="date" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -333,10 +333,9 @@
                                 </div>
                                 <div class="col-md-3">
                                     <select class="form-select">
-                                        <option selected>Child</option>
-                                        <option value="1">Child 1</option>
-                                        <option value="2">Child 2</option>
-                                        <option value="3">Child 3</option>
+                                        {%for r in products %}
+                                        <option selected>{{r.name}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -541,16 +540,6 @@
             </div>
         </div>
         <!-- Room End -->
-                                                <div class="pagination d">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a href="#" class="active">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
-</div>
 
         <!-- Testimonial Start -->
         <div class="container-xxl testimonial mt-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s" style="margin-bottom: 90px;">
