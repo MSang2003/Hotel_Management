@@ -1,24 +1,25 @@
 import math
 
-from flask import render_template, request, redirect, jsonify, session,url_for
+from flask import render_template, request, redirect, jsonify, session, url_for
 import dao
 import utils
 from app import app, login
-from flask_login import login_user,current_user
+from flask_login import login_user, current_user
+
 
 @app.route("/")
 def index():
-    kw = request.args.get('kw')
-    cate_id = request.args.get('cate_id')
-    page = request.args.get('page')
+    # kw = request.args.get('kw')
+    # cate_id = request.args.get('cate_id')
+    # page = request.args.get('page')
+    #
+    # prods = dao.get_products(kw, cate_id, page)
+    #
+    # num = dao.count_product()
+    # page_size = app.config['PAGE_SIZE']
 
-    prods = dao.get_products(kw, cate_id, page)
-
-    num = dao.count_product()
-    page_size = app.config['PAGE_SIZE']
-
-    return render_template('index.html',
-                           products=prods, pages=math.ceil(num/page_size))
+    return render_template('index.html'
+                           )
 
 
 @app.route('/admin/login', methods=['post'])
@@ -30,12 +31,13 @@ def admin_login():
     if user:
         login_user(user)
 
-    return redirect('/admin/category')
+    return redirect('/admin/staff')
 
 
 @app.route('/cart')
 def cart():
     return render_template('cart.html')
+
 
 @app.route('/api/cart', methods=['post'])
 def add_to_cart():
@@ -46,9 +48,9 @@ def add_to_cart():
         cart = {}
 
     id = str(data.get("id"))
-    if id in cart: # da co trong gio
+    if id in cart:  # da co trong gio
         cart[id]['quantity'] += 1
-    else: # chua co trong gio
+    else:  # chua co trong gio
         cart[id] = {
             "id": id,
             "name": data.get('name'),
@@ -126,9 +128,11 @@ def pay():
 def room():
     return render_template('room.html')
 
+
 @app.route('/index')
 def home():
     return render_template('index.html')
+
 
 @app.route('/service')
 def service():
@@ -150,4 +154,5 @@ def load_user(user_id):
 
 if __name__ == '__main__':
     from app import admin
+
     app.run(debug=True)
