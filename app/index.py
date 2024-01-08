@@ -165,13 +165,14 @@ def load_user(user_id):
     return dao.get_user_by_id(user_id)
 
 
-@app.route('/room')
-def room():
-    kw = request.args.get('kw')
-
-    products = dao.get_products(kw)
-
-    return render_template('room.html',products = products)
+# @app.route('/room')
+# def room():
+#     pass
+    # kw = request.args.get('kw')
+    #
+    # products = dao.get_products(kw)
+    #
+    # return render_template('room.html',products = products)
 
 
 if __name__ == '__main__':

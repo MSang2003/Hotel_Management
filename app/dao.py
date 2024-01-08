@@ -1,4 +1,4 @@
-from app.models import User, Receipt,Room,
+from app.models import User, Receipt,Room
 from app import app, db
 import hashlib
 from flask_login import current_user

@@ -188,9 +188,10 @@ if __name__ == '__main__':
         # db.session.add_all([nguoidat1, nguoidat3,nguoidat2])
         # db.session.commit()
         #
+
+        # r1 = Room(room_type_id=1, name = 'ABC')
+        # r2 = Room(room_type_id=2, name='DSA')
         #
-        # r1 = Room.query.get(1)
-        # r2 = Room.query.get(2)
         # db.session.add_all([r1, r2])
         # db.session.commit()
         #
@@ -203,28 +204,28 @@ if __name__ == '__main__':
         # s3 = Staff(name = 'Trieu', address = 'hcm', id_card = '437867323254')
         # db.session.add_all([s3,s2,s1])
         # db.session.commit()
-        #
 
-        #
+
+
         # rent1 = RentForm(staff_id=1, orderer_id=1)
         # rent2 = RentForm(staff_id = 2,orderer_id =2)
         #
         # db.session.add_all([rent1, rent2])
         # db.session.commit()
-
+        #
         #
         # re1 = ReserveForm(staff_id = 2,orderer_id = 2)
         # re2 = ReserveForm(staff_id = 3,orderer_id = 1)
         # db.session.add_all([re2, re1])
         # db.session.commit()
-        #
+
         # c1 = Customer(name='Sang', address='HCm', id_card='8543679843', cus_coefficient_id=1)
         # c2 = Customer(name='Long', address='Gia Lai', id_card='8543546679843', cus_coefficient_id=2)
         # c3 = Customer(name='Hieu', address='BinhDuong', id_card='85436792843', cus_coefficient_id=1)
         # db.session.add_all([c1,c2,c3])
         # db.session.commit()
+        # # #
         # #
-        #
         #
         #
         # u = User(name='Admin', username='admin',staff_id=1,
@@ -244,11 +245,11 @@ if __name__ == '__main__':
         # db.session.add_all([receipt])
         # db.session.commit()
 
-        rent1 = RentForm.query.get(1)
-        room1 = Room.query.get(1)
-        room2 = Room.query.get(2)
-        rent1.rooms.append(room1)
-        rent1.rooms.append(room2)
-
-        db.session.add((rent1))
-        db.session.commit()
+        # rent1 = RentForm.query.get(1)
+        # room1 = Room.query.get(1)
+        # room2 = Room.query.get(2)
+        # rent1.rooms.append(room1)
+        # rent1.rooms.append(room2)
+        #
+        # db.session.add((rent1))
+        # db.session.commit()
