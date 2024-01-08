@@ -129,9 +129,22 @@ def room():
     return render_template('room.html')
 
 
-@app.route('/index')
-def home():
-    return render_template('index.html')
+@app.route('/booking')
+def booking():
+    kw = request.args.get('kw')
+
+
+    rooms = dao.get_products(kw, cate_id, page)
+
+    num = dao.count_product()
+
+    return render_template('booking.html',products=products)
+
+
+@app.route('/room/<id>')
+def detail_room():
+    return render_template('detail_room.html',room = dao.get_user_by_id(id))
+
 
 
 @app.route('/service')
@@ -150,6 +163,15 @@ def common_responses():
 @login.user_loader
 def load_user(user_id):
     return dao.get_user_by_id(user_id)
+
+
+@app.route('/room')
+def room():
+    kw = request.args.get('kw')
+
+    products = dao.get_products(kw)
+
+    return render_template('room.html',products = products)
 
 
 if __name__ == '__main__':

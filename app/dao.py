@@ -1,4 +1,4 @@
-from app.models import User, Receipt
+from app.models import User, Receipt,Room,
 from app import app, db
 import hashlib
 from flask_login import current_user
@@ -27,7 +27,12 @@ def get_products(kw, cate_id, page=None):
     #     return products.slice(start, start + page_size)
     #
     # return products.all()
-
+def get_room(kw):
+    pass
+    # rooms = Room.query
+    #
+    # if kw:
+    #     rooms = rooms.filter(Room.name.contains(kw))
 
 def count_product():
     pass
