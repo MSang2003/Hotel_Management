@@ -60,6 +60,13 @@ class Product(db.Model):
     def __str__(self):
         return self.name
 
+class Room(db.Model):
+    id = Column(Integer,primary_key=True,autoincrement=True)
+    name = Column(String(50), nullable=False, unique=True)
+    price = Column(Float, default=0)
+    state = Column(Boolean, default=True)
+
+
 
 class BaseModel(db.Model):
     __abstract__ = True
@@ -86,14 +93,16 @@ if __name__ == '__main__':
         # db.create_all()
 
         import hashlib
-        u = User(name='Admin', username='admin',
-                 password=str(hashlib.md5('123456'.encode('utf-8')).hexdigest()),
-                 user_role=UserRoleEnum.ADMIN)
-        u3 = User(name='Receptionist', username='nhanvien',
-                 password=str(hashlib.md5('12345'.encode('utf-8')).hexdigest()),
-                 user_role=UserRoleEnum.USER)
-        db.session.add(u)
-        db.session.commit()
+        # u = User(name='Admin', username='admin',
+        #          password=str(hashlib.md5('123456'.encode('utf-8')).hexdigest()),
+        #          user_role=UserRoleEnum.ADMIN)
+        # u3 = User(name='Receptionist', username='nhanvien',
+        #          password=str(hashlib.md5('12345'.encode('utf-8')).hexdigest()),
+        #          user_role=UserRoleEnum.USER)
+        # db.session.add(u)
+        # db.session.add(u3)
+        #
+        # db.session.commit()
 
         # c1 = Category(name='Mobile')
         # c2 = Category(name='Tablet')
@@ -101,25 +110,25 @@ if __name__ == '__main__':
         # db.session.add(c1)
         # db.session.add(c2)
         # db.session.add(c3)
-        # # db.session.commit()
+        # db.session.commit()
         #
-        # employee1 = Employee(name="Nguyễn Minh Sang", phone='04248572934',
+        # employee1 = Employee(name="Nguyễn Minh Sang", phone='0424857',
         #                      address="HCM", note="Đẹp trai vc")
-        # employee2 = Employee(name="Nguyễn Minh Sang", phone='04248572934',
+        # employee2 = Employee(name="Nguyễn Minh Sang", phone='0424857',
         #                      address="HCM", note="Đẹp trai vc")
-        # employee3 = Employee(name="Nguyễn Minh Sang", phone='04248572934',
+        # employee3 = Employee(name="Nguyễn Minh Sang", phone='0424857',
         #                      address="HCM", note="Đẹp trai vc")
-        # employee4 = Employee(name="Nguyễn Minh Sang", phone='04248572934',
+        # employee4 = Employee(name="Nguyễn Minh Sang", phone='0424857',
         #                      address="HCM", note="Đẹp trai vc")
-        # employee5 = Employee(name="Nguyễn Minh Sang", phone='04248572934',
+        # employee5 = Employee(name="Nguyễn Minh Sang", phone='0424857',
         #                      address="HCM", note="Đẹp trai vc")
         #
         # db.session.add_all((employee1, employee2, employee5, employee4, employee3))
-        #
-        # p1 = Product(name='iPhone 13', price=22000000, category_id=1)
-        # p2 = Product(name='Galaxy Tab S9', price=28000000, category_id=2)
-        # p3 = Product(name='iPad Pro 2023', price=21000000, category_id=2)
-        # p4 = Product(name='Galaxy S23', price=18000000, category_id=1)
-        # p5 = Product(name='iPhone 15', price=22000000, category_id=1)
-        # db.session.add_all([p1, p2, p3, p4, p5])
+
+        p1 = Product(name='iPhone 13', price=22000000, category_id=11)
+        p2 = Product(name='Galaxy Tab S9', price=28000000, category_id=12)
+        p3 = Product(name='iPad Pro 2023', price=21000000, category_id=12)
+        p4 = Product(name='Galaxy S23', price=18000000, category_id=11)
+        p5 = Product(name='iPhone 15', price=22000000, category_id=11)
+        db.session.add_all([p1,p3,p2,p4,p5])
         db.session.commit()

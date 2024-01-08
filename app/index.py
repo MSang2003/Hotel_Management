@@ -37,7 +37,6 @@ def admin_login():
 def cart():
     return render_template('cart.html')
 
-
 @app.route('/api/cart', methods=['post'])
 def add_to_cart():
     data = request.json
@@ -111,7 +110,7 @@ def process_user_login():
         next = request.args.get('next')
         return redirect("/" if next is None else next)
 
-    return render_template('admin/login')
+    return render_template('admin/category')
 
 
 @app.route("/api/pay", methods=['post'])
@@ -121,6 +120,19 @@ def pay():
         return jsonify({'status': 200})
 
     return jsonify({'status': 500, 'err_msg': 'Something wrong!'})
+
+
+@app.route('/room')
+def room():
+    return render_template('room.html')
+
+@app.route('/index')
+def home():
+    return render_template('index.html')
+
+@app.route('/service')
+def service():
+    return render_template('service.html')
 
 
 @app.context_processor
