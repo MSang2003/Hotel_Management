@@ -4,672 +4,681 @@
 <link href="style.css" rel="stylesheet"/>
 
 {% block content %}
-    <style>
-        /*** Service ***/
-        .service-item {
-            height: 320px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            background: #ffffff;
-            box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
-            transition: 0.5s;
-        }
+<style>
+    /*** Service ***/
+    .service-item {
+        height: 320px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        background: #ffffff;
+        box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+        transition: 0.5s;
+    }
 
-        .service-item:hover {
-            background: #0B5ED7;
-        }
+    .service-item:hover {
+        background: #0B5ED7;
+    }
 
-        .service-item .service-icon {
-            margin: 0 auto 30px auto;
-            width: 65px;
-            height: 65px;
-            transition: 0.5s;
+    .service-item .service-icon {
+        margin: 0 auto 30px auto;
+        width: 65px;
+        height: 65px;
+        transition: 0.5s;
 
-        }
+    }
 
-        a {
-            text-decoration: none;
-            font-size: 18px;
-        }
+    a {
+        text-decoration: none;
+        font-size: 18px;
+    }
 
-        .service-item i,
-        .service-item h5,
-        .service-item p {
-            transition: 0.5s;
-        }
+    .service-item i,
+    .service-item h5,
+    .service-item p {
+        transition: 0.5s;
+    }
 
-        .service-item:hover i,
-        .service-item:hover h5,
-        .service-item:hover p {
-            color: #ffffff !important;
-        }
+    .service-item:hover i,
+    .service-item:hover h5,
+    .service-item:hover p {
+        color: #ffffff !important;
+    }
 
 
+    .img-absolute {
+        position: absolute;
+        bottom: -100px;
+        right: -100px;
+    }
+
+    .img-absolute img {
+        max-width: 200px;
+        border-radius: 50%;
+        border: 10px solid #f2f4fb;
+    }
+
+    @media (max-width: 991.98px) {
         .img-absolute {
-            position: absolute;
-            bottom: -100px;
-            right: -100px;
+            right: 0px;
         }
 
         .img-absolute img {
-            max-width: 200px;
-            border-radius: 50%;
-            border: 10px solid #f2f4fb;
+            max-width: 160px;
         }
+    }
 
-        @media (max-width: 991.98px) {
-            .img-absolute {
-                right: 0px;
-            }
-
-            .img-absolute img {
-                max-width: 160px;
-            }
-        }
-
-        .heading {
-            font-family: "Playfair Display", times, serif;
-            font-weight: bold;
-        }
+    .heading {
+        font-family: "Playfair Display", times, serif;
+        font-weight: bold;
+    }
 <!---->
 
-        /*** Service ***/
+    /*** Service ***/
 .service-item {
-  height: 320px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background: #ffffff;
-  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
-  transition: 0.5s;
+height: 320px;
+padding: 30px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+background: #ffffff;
+box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+transition: 0.5s;
 }
 
 .service-item:hover {
-  background: var(--primary);
+background: var(--primary);
 }
 
 .service-item .service-icon {
-  margin: 0 auto 30px auto;
-  width: 65px;
-  height: 65px;
-  transition: 0.5s;
+margin: 0 auto 30px auto;
+width: 65px;
+height: 65px;
+transition: 0.5s;
 }
 
 .service-item i,
 .service-item h5,
 .service-item p {
-  transition: 0.5s;
+transition: 0.5s;
 }
 
 .service-item:hover i,
 .service-item:hover h5,
 .service-item:hover p {
-  color: #333 !important;
+color: #333 !important;
 }
 
-    </style>
-    <div class="container-fluid p-0 mb-5 container">
-        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active ">
-                    <img class="w-100" src="/static/images/carousel-1.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style=" top: 0;
+</style>
+<div class="container-fluid p-0 mb-5 container">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active ">
+                <img class="w-100" src="/static/images/carousel-1.jpg" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style=" top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(15, 23, 43, .7);
     z-index: 1;background:  rgba(15, 23, 43, .7)">
-                        <div class="p-3" style="max-width: 700px;">
+                    <div class="p-3" style="max-width: 700px;">
 
-                            <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury
-                                Living</h6>
-                            <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious
-                                Hotel</h1>
-                            <a href="/room" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
-                            <a href="/booking" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                        <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury
+                            Living</h6>
+                        <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious
+                            Hotel</h1>
+                        <a href="/room" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
+                        <a href="/booking" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
 
-                        </div>
                     </div>
                 </div>
-                <div class="carousel-item ">
-                    <img class="w-100" src="/static/images/carousel-2.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style=" top: 0;
+            </div>
+            <div class="carousel-item ">
+                <img class="w-100" src="/static/images/carousel-2.jpg" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style=" top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(15, 23, 43, .7);
     z-index: 1;background:  rgba(15, 23, 43, .7)">
-                        <div class="p-3" style="max-width: 700px;">
-                            <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury
-                                Living</h6>
-                            <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious
-                                Hotel</h1>
-                            <a href="/room" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
-                            <a href="/booking" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                    <div class="p-3" style="max-width: 700px;">
+                        <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury
+                            Living</h6>
+                        <h1 class="display-3 text-white mb-4 animated slideInDown">Discover A Brand Luxurious
+                            Hotel</h1>
+                        <a href="/room" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Rooms</a>
+                        <a href="/booking" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
 
-                        </div>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <!-- Carousel End -->
+</div>
+<!-- Carousel End -->
 
 
-
-
-
-    {#    <!-- About Start -->#}
-    {#    <div class="container-xxl py-5">#}
-    {#        <div class="container">#}
-    {#            <div class="row g-5 align-items-center">#}
-    {#                <div class="col-lg-6">#}
-    {#                    <h6 class="section-title text-start text-primary text-uppercase">About Us</h6>#}
-    {#                    <h1 class="mb-4">Welcome to <span class="text-primary text-uppercase">Hotelier</span></h1>#}
-    {#                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et#}
-    {#                        eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat#}
-    {#                        amet</p>#}
-    {#                    <div class="row g-3 pb-4">#}
-    {#                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">#}
-    {#                            <div class="border rounded p-1">#}
-    {#                                <div class="border rounded text-center p-4">#}
-    {#                                    <i class="fa fa-hotel fa-2x text-primary mb-2"></i>#}
-    {#                                    <h2 class="mb-1" data-toggle="counter-up">1234</h2>#}
-    {#                                    <p class="mb-0">Rooms</p>#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">#}
-    {#                            <div class="border rounded p-1">#}
-    {#                                <div class="border rounded text-center p-4">#}
-    {#                                    <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>#}
-    {#                                    <h2 class="mb-1" data-toggle="counter-up">1234</h2>#}
-    {#                                    <p class="mb-0">Staffs</p>#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                        <div class="col-sm-4 wow fadeIn" data-wow-delay="0.5s">#}
-    {#                            <div class="border rounded p-1">#}
-    {#                                <div class="border rounded text-center p-4">#}
-    {#                                    <i class="fa fa-users fa-2x text-primary mb-2"></i>#}
-    {#                                    <h2 class="mb-1" data-toggle="counter-up">1234</h2>#}
-    {#                                    <p class="mb-0">Clients</p>#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Explore More</a>#}
-    {#                </div>#}
-    {#                <div class="col-lg-6">#}
-    {#                    <div class="row g-3">#}
-    {#                        <div class="col-6 text-end">#}
-    {#                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s"#}
-    {#                                 src="/static/images/about-1.jpg" style="margin-top: 25%;">#}
-    {#                        </div>#}
-    {#                        <div class="col-6 text-start">#}
-    {#                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s"#}
-    {#                                 src="/static/images/about-2.jpg">#}
-    {#                        </div>#}
-    {#                        <div class="col-6 text-end">#}
-    {#                            <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s"#}
-    {#                                 src="/static/images/about-3.jpg">#}
-    {#                        </div>#}
-    {#                        <div class="col-6 text-start">#}
-    {#                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s"#}
-    {#                                 src="/static/images/about-4.jpg">#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#    </div>#}
-    <!-- About End -->
-
-  <section class=" bg-light">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div
-                        class="col-md-12 col-lg-5 ml-auto order-lg-2 position-relative mb-5"
-                        data-aos="fade-up"
-                >
-                    <div class="img-absolute">
-                        <img src="/static/images/food-1.jpg" alt="Image" class="img-fluid"/>
+{#    <!-- About Start -->#}
+{#
+<div class="container-xxl py-5">#}
+    {#
+    <div class="container">#}
+        {#
+        <div class="row g-5 align-items-center">#}
+            {#
+            <div class="col-lg-6">#}
+                {# <h6 class="section-title text-start text-primary text-uppercase">About Us</h6>#}
+                {# <h1 class="mb-4">Welcome to <span class="text-primary text-uppercase">Hotelier</span></h1>#}
+                {# <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam
+                    et#}
+                    {# eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat#}
+                    {# amet</p>#}
+                {#
+                <div class="row g-3 pb-4">#}
+                    {#
+                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">#}
+                        {#
+                        <div class="border rounded p-1">#}
+                            {#
+                            <div class="border rounded text-center p-4">#}
+                                {# <i class="fa fa-hotel fa-2x text-primary mb-2"></i>#}
+                                {# <h2 class="mb-1" data-toggle="counter-up">1234</h2>#}
+                                {# <p class="mb-0">Rooms</p>#}
+                                {#
+                            </div>
+                            #}
+                            {#
+                        </div>
+                        #}
+                        {#
                     </div>
-                    <img src="/static/images/img_1.jpg" alt="Image" class="img-fluid rounded"/>
+                    #}
+                    {#
+                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">#}
+                        {#
+                        <div class="border rounded p-1">#}
+                            {#
+                            <div class="border rounded text-center p-4">#}
+                                {# <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>#}
+                                {# <h2 class="mb-1" data-toggle="counter-up">1234</h2>#}
+                                {# <p class="mb-0">Staffs</p>#}
+                                {#
+                            </div>
+                            #}
+                            {#
+                        </div>
+                        #}
+                        {#
+                    </div>
+                    #}
+                    {#
+                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.5s">#}
+                        {#
+                        <div class="border rounded p-1">#}
+                            {#
+                            <div class="border rounded text-center p-4">#}
+                                {# <i class="fa fa-users fa-2x text-primary mb-2"></i>#}
+                                {# <h2 class="mb-1" data-toggle="counter-up">1234</h2>#}
+                                {# <p class="mb-0">Clients</p>#}
+                                {#
+                            </div>
+                            #}
+                            {#
+                        </div>
+                        #}
+                        {#
+                    </div>
+                    #}
+                    {#
                 </div>
-                <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
-                    <h2 class="heading">Welcome!</h2>
-                    <p class="mb-4">
-                        Far far away, behind the word mountains, far from the countries
-                        Vokalia and Consonantia, there live the blind texts. Separated
-                        they live in Bookmarksgrove right at the coast of the Semantics, a
-                        large language ocean.
-                    </p>
-                    <p>
-                        <a href="#" class="btn btn-primary text-white py-2 mr-3"
-                        >Learn More</a
-                        >
-                    </p>
-                </div>
+                #}
+                {# <a class="btn btn-primary py-3 px-5 mt-2" href="">Explore More</a>#}
+                {#
             </div>
+            #}
+            {#
+            <div class="col-lg-6">#}
+                {#
+                <div class="row g-3">#}
+                    {#
+                    <div class="col-6 text-end">#}
+                        {# <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" #}
+                                {# src="/static/images/about-1.jpg" style="margin-top: 25%;">#}
+                        {#
+                    </div>
+                    #}
+                    {#
+                    <div class="col-6 text-start">#}
+                        {# <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" #}
+                                {# src="/static/images/about-2.jpg">#}
+                        {#
+                    </div>
+                    #}
+                    {#
+                    <div class="col-6 text-end">#}
+                        {# <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" #}
+                                {# src="/static/images/about-3.jpg">#}
+                        {#
+                    </div>
+                    #}
+                    {#
+                    <div class="col-6 text-start">#}
+                        {# <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" #}
+                                {# src="/static/images/about-4.jpg">#}
+                        {#
+                    </div>
+                    #}
+                    {#
+                </div>
+                #}
+                {#
+            </div>
+            #}
+            {#
         </div>
-    </section>
-    <!-- Room Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title text-center text-primary text-uppercase" >Our Rooms</h6>
-                <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
+        #}
+        {#
+    </div>
+    #}
+    {#
+</div>#}
+<!-- About End -->
+
+<section class=" bg-light">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div
+                    class="col-md-12 col-lg-5 ml-auto order-lg-2 position-relative mb-5"
+                    data-aos="fade-up"
+            >
+                <div class="img-absolute">
+                    <img src="/static/images/food-1.jpg" alt="Image" class="img-fluid"/>
+                </div>
+                <img src="/static/images/img_1.jpg" alt="Image" class="img-fluid rounded"/>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="room-item shadow rounded overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="/static/images/room-1.jpg" alt="">
-                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">$100/Night</small>
-                        </div>
-                        <div class="p-4 mt-2">
-                            <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">Junior Suite</h5>
-                                <div class="ps-2">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3
-                                    Bed</small>
-                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
-                                    Bath</small>
-                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
-                            </div>
-                            <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem
-                                sed diam stet diam sed stet lorem.</p>
-                            <div class="d-flex justify-content-between">
-                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="/detail_room">View Detail</a>
-                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="/booking">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="room-item shadow rounded overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="/static/images/room-2.jpg" alt="">
-                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">$100/Night</small>
-                        </div>
-                        <div class="p-4 mt-2">
-                            <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">Executive Suite</h5>
-                                <div class="ps-2">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3
-                                    Bed</small>
-                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
-                                    Bath</small>
-                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
-                            </div>
-                            <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem
-                                sed diam stet diam sed stet lorem.</p>
-                            <div class="d-flex justify-content-between">
-                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="room-item shadow rounded overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="/static/images/room-3.jpg" alt="">
-                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">$100/Night</small>
-                        </div>
-                        <div class="p-4 mt-2">
-                            <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">Super Deluxe</h5>
-                                <div class="ps-2">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3
-                                    Bed</small>
-                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
-                                    Bath</small>
-                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
-                            </div>
-                            <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem
-                                sed diam stet diam sed stet lorem.</p>
-                            <div class="d-flex justify-content-between">
-                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
+                <h2 class="heading">Welcome!</h2>
+                <p class="mb-4">
+                    Far far away, behind the word mountains, far from the countries
+                    Vokalia and Consonantia, there live the blind texts. Separated
+                    they live in Bookmarksgrove right at the coast of the Semantics, a
+                    large language ocean.
+                </p>
+                <p>
+                    <a href="#" class="btn btn-primary text-white py-2 mr-3"
+                    >Learn More</a
+                    >
+                </p>
             </div>
         </div>
     </div>
-    <!-- Room End -->
+</section>
+<!-- Room Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Our Rooms</h6>
+            <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
+        </div>
+        <div class="row g-4">
+            {% for p in roomtype %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp " ID="room" data-wow-delay="0.1s">
+                <div class="room-item shadow rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="{{p.image}}" alt="">
+                        <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{"{:,.0f}".format(p.price)}}
+                            VND</small>
+                    </div>
+                    <div class="p-4 mt-2">
+                        <div class="d-flex justify-content-between mb-3">
 
+                            <h5 class="mb-0">{{p.type}}</h5>
 
-
-
-    <!-- Service Start -->
-    <div class="container py-5">
-        <div class="container ">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Services</span></h1>
+                            <div class="ps-2">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                            <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
+                                Bath</small>
+                            <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                        </div>
+                        <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
+                            diam stet diam sed stet lorem.</p>
+                        <div class="d-flex justify-content-between">
+                            <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
+                            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="/booking">Book Now</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="row g-4 ">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a class="service-item rounded " href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-hotel fa-2x text-primary"></i>
-                            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Room End -->
+
+
+<!-- Service Start -->
+<div class="container py-5">
+    <div class="container ">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Services</span></h1>
+        </div>
+        <div class="row g-4 ">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <a class="service-item rounded " href="">
+                    <div class="service-icon bg-transparent border rounded p-1">
+                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                            <i class="fa fa-hotel fa-2x text-primary"></i>
                         </div>
-                        <h5 class="mb-3">Rooms & Appartment</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                            diam stet diam sed stet lorem.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                    <a class="service-item rounded" href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-utensils fa-2x text-primary"></i>
-                            </div>
+                    </div>
+                    <h5 class="mb-3">Rooms & Appartment</h5>
+                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
+                        diam stet diam sed stet lorem.</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                <a class="service-item rounded" href="">
+                    <div class="service-icon bg-transparent border rounded p-1">
+                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                            <i class="fa fa-utensils fa-2x text-primary"></i>
                         </div>
-                        <h5 class="mb-3">Food & Restaurant</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                            diam stet diam sed stet lorem.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a class="service-item rounded" href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-spa fa-2x text-primary"></i>
-                            </div>
+                    </div>
+                    <h5 class="mb-3">Food & Restaurant</h5>
+                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
+                        diam stet diam sed stet lorem.</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <a class="service-item rounded" href="">
+                    <div class="service-icon bg-transparent border rounded p-1">
+                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                            <i class="fa fa-spa fa-2x text-primary"></i>
                         </div>
-                        <h5 class="mb-3">Spa & Fitness</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                            diam stet diam sed stet lorem.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                    <a class="service-item rounded" href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-swimmer fa-2x text-primary"></i>
-                            </div>
+                    </div>
+                    <h5 class="mb-3">Spa & Fitness</h5>
+                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
+                        diam stet diam sed stet lorem.</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                <a class="service-item rounded" href="">
+                    <div class="service-icon bg-transparent border rounded p-1">
+                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                            <i class="fa fa-swimmer fa-2x text-primary"></i>
                         </div>
-                        <h5 class="mb-3">Sports & Gaming</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                            diam stet diam sed stet lorem.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a class="service-item rounded" href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-glass-cheers fa-2x text-primary"></i>
-                            </div>
+                    </div>
+                    <h5 class="mb-3">Sports & Gaming</h5>
+                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
+                        diam stet diam sed stet lorem.</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <a class="service-item rounded" href="">
+                    <div class="service-icon bg-transparent border rounded p-1">
+                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                            <i class="fa fa-glass-cheers fa-2x text-primary"></i>
                         </div>
-                        <h5 class="mb-3">Event & Party</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                            diam stet diam sed stet lorem.</p>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                    <a class="service-item rounded" href="">
-                        <div class="service-icon bg-transparent border rounded p-1">
-                            <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <i class="fa fa-dumbbell fa-2x text-primary"></i>
-                            </div>
+                    </div>
+                    <h5 class="mb-3">Event & Party</h5>
+                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
+                        diam stet diam sed stet lorem.</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                <a class="service-item rounded" href="">
+                    <div class="service-icon bg-transparent border rounded p-1">
+                        <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                            <i class="fa fa-dumbbell fa-2x text-primary"></i>
                         </div>
-                        <h5 class="mb-3">GYM & Yoga</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
-                            diam stet diam sed stet lorem.</p>
-                    </a>
-                </div>
+                    </div>
+                    <h5 class="mb-3">GYM & Yoga</h5>
+                    <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed
+                        diam stet diam sed stet lorem.</p>
+                </a>
             </div>
         </div>
     </div>
-    <!-- Service End -->
+</div>
+<!-- Service End -->
 
 <!-- article-->
 <section class="section blog-post-entry bg-light">
-      <div class="container">
+    <div class="container">
         <div class="row justify-content-center align-items-center text-center mb-5" sty>
-          <div class="col-md-7">
-            <h2 class="heading" data-aos="fade-up">Events</h2>
-            <p data-aos="fade-up">
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean.
-            </p>
-          </div>
+            <div class="col-md-7">
+                <h2 class="heading" data-aos="fade-up">Events</h2>
+                <p data-aos="fade-up">
+                    Far far away, behind the word mountains, far from the countries
+                    Vokalia and Consonantia, there live the blind texts. Separated
+                    they live in Bookmarksgrove right at the coast of the Semantics, a
+                    large language ocean.
+                </p>
+            </div>
         </div>
         <div class="row justify-content-center">
-          <div
-            class="col-lg-3 col-md-6 col-sm-6 col-12 post"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="media media-custom d-block mb-4 h-100">
-              <a href="#" class="mb-4 d-block"
-                ><img
-                  src="/static/images/img_1.jpg"
-                  alt="Image placeholder"
-                  class="img-fluid"
-              /></a>
-              <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3">
-                  <a href="#"
-                    >Travel Hacks to Make Your Flight More Comfortable</a
-                  >
-                </h2>
-                <p>
-                  Far far away, behind the word mountains, far from the
-                  countries Vokalia and Consonantia, there live the blind texts.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-lg-3 col-md-6 col-sm-6 col-12 post"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div class="media media-custom d-block mb-4 h-100">
-              <a href="#" class="mb-4 d-block"
-                ><img
-                  src="/static/images/img_2.jpg"
-                  alt="Image placeholder"
-                  class="img-fluid"
-              /></a>
-              <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3">
-                  <a href="#"
-                    >5 Job Types That Aallow You To Earn As You Travel The
-                    World</a
-                  >
-                </h2>
-                <p>
-                  Separated they live in Bookmarksgrove right at the coast of
-                  the Semantics, a large language ocean.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-lg-3 col-md-6 col-sm-6 col-12 post"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <div class="media media-custom d-block mb-4 h-100">
-              <a href="#" class="mb-4 d-block"
-                ><img
-                  src="/static/images/img_3.jpg"
-                  alt="Image placeholder"
-                  class="img-fluid"
-              /></a>
-              <div class="media-body">
-                <span class="meta-post">February 26, 2018</span>
-                <h2 class="mt-0 mb-3">
-                  <a href="#">30 Great Ideas On Gifts For Travelers</a>
-                </h2>
-                <p>
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia. t is a paradisematic country,
-                  in which roasted parts of sentences.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title text-center text-primary text-uppercase">Our Team</h6>
-                <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Staffs</span></h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="/static/images/team-1.jpg" alt="">
-                            <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 mt-3">
-                            <h5 class="fw-bold mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
+            <div
+                    class="col-lg-3 col-md-6 col-sm-6 col-12 post"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+            >
+                <div class="media media-custom d-block mb-4 h-100">
+                    <a href="#" class="mb-4 d-block"
+                    ><img
+                            src="/static/images/img_1.jpg"
+                            alt="Image placeholder"
+                            class="img-fluid"
+                    /></a>
+                    <div class="media-body">
+                        <span class="meta-post">February 26, 2018</span>
+                        <h2 class="mt-0 mb-3">
+                            <a href="#"
+                            >Travel Hacks to Make Your Flight More Comfortable</a
+                            >
+                        </h2>
+                        <p>
+                            Far far away, behind the word mountains, far from the
+                            countries Vokalia and Consonantia, there live the blind texts.
+                        </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="/static/images/team-2.jpg" alt="">
-                            <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 mt-3">
-                            <h5 class="fw-bold mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
+            </div>
+            <div
+                    class="col-lg-3 col-md-6 col-sm-6 col-12 post"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+            >
+                <div class="media media-custom d-block mb-4 h-100">
+                    <a href="#" class="mb-4 d-block"
+                    ><img
+                            src="/static/images/img_2.jpg"
+                            alt="Image placeholder"
+                            class="img-fluid"
+                    /></a>
+                    <div class="media-body">
+                        <span class="meta-post">February 26, 2018</span>
+                        <h2 class="mt-0 mb-3">
+                            <a href="#"
+                            >5 Job Types That Aallow You To Earn As You Travel The
+                                World</a
+                            >
+                        </h2>
+                        <p>
+                            Separated they live in Bookmarksgrove right at the coast of
+                            the Semantics, a large language ocean.
+                        </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="/static/images/team-3.jpg" alt="">
-                            <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 mt-3">
-                            <h5 class="fw-bold mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="rounded shadow overflow-hidden">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="/static/images/team-4.jpg" alt="">
-                            <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 mt-3">
-                            <h5 class="fw-bold mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
+            </div>
+            <div
+                    class="col-lg-3 col-md-6 col-sm-6 col-12 post"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+            >
+                <div class="media media-custom d-block mb-4 h-100">
+                    <a href="#" class="mb-4 d-block"
+                    ><img
+                            src="/static/images/img_3.jpg"
+                            alt="Image placeholder"
+                            class="img-fluid"
+                    /></a>
+                    <div class="media-body">
+                        <span class="meta-post">February 26, 2018</span>
+                        <h2 class="mt-0 mb-3">
+                            <a href="#">30 Great Ideas On Gifts For Travelers</a>
+                        </h2>
+                        <p>
+                            A small river named Duden flows by their place and supplies it
+                            with the necessary regelialia. t is a paradisematic country,
+                            in which roasted parts of sentences.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Team End -->
+</section>
+
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Our Team</h6>
+            <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Staffs</span></h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="rounded shadow overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="/static/images/team-1.jpg" alt="">
+                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4 mt-3">
+                        <h5 class="fw-bold mb-0">Full Name</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="rounded shadow overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="/static/images/team-2.jpg" alt="">
+                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4 mt-3">
+                        <h5 class="fw-bold mb-0">Full Name</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="rounded shadow overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="/static/images/team-3.jpg" alt="">
+                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4 mt-3">
+                        <h5 class="fw-bold mb-0">Full Name</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="rounded shadow overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="/static/images/team-4.jpg" alt="">
+                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4 mt-3">
+                        <h5 class="fw-bold mb-0">Full Name</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team End -->
 
 
-
-    <!-- Newsletter Start -->
-
+<!-- Newsletter Start -->
 
 
-
-
-    {#<section class="container">#}
-    {#    <ul class="pagination mt-1">#}
-    {#        {% for i in range(pages) %}#}
-    {#        <li class="page-item"><a class="page-link" href="/?page={{ i + 1 }}">{{ i + 1 }}</a></li>#}
-    {#        {% endfor %}#}
-    {#    </ul>#}
-    {#    <div class="row">#}
-    {#        {% for p in products %}#}
-    {#        <div class="col-xs-12 col-md-3" style="padding: 5px;">#}
-    {#            <div class="card">#}
-    {#                <img class="card-img-top" src="{{ p.image }}" alt="Card image">#}
-    {#                <div class="card-body">#}
-    {#                    <h4 class="card-title">{{ p.name }}</h4>#}
-    {#                    <p class="card-text">{{ p.price }} VNĐ</p>#}
-    {#                    <a href="#" class="btn btn-primary">Xem chi tiết</a>#}
-    {#                    <a href="javascript:;" onclick="addToCart({{p.id}}, '{{p.name}}', {{p.price}})" class="btn btn-danger">Đặt hàng</a>#}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </div>#}
-    {#        {% endfor %}#}
-    {#    </div>#}
-    {#</section>#}
+{#
+<section class="container">#}
+    {#
+    <ul class="pagination mt-1">#}
+        {# {% for i in range(pages) %}#}
+        {#
+        <li class="page-item"><a class="page-link" href="/?page={{ i + 1 }}">{{ i + 1 }}</a></li>
+        #}
+        {# {% endfor %}#}
+        {#
+    </ul>
+    #}
+    {#
+    <div class="row">#}
+        {# {% for p in rooms %}#}
+        {#
+        <div class="col-xs-12 col-md-3" style="padding: 5px;">#}
+            {#
+            <div class="card">#}
+                {# <img class="card-img-top" src="{{ p.image }}" alt="Card image">#}
+                {#
+                <div class="card-body">#}
+                    {# <h4 class="card-title">{{ p.name }}</h4>#}
+                    {# <p class="card-text">{{ p.price }} VNĐ</p>#}
+                    {# <a href="#" class="btn btn-primary">Xem chi tiết</a>#}
+                    {# <a href="javascript:;" onclick="addToCart({{p.id}}, '{{p.name}}', {{p.price}})"
+                          class="btn btn-danger">Đặt hàng</a>#}
+                    {#
+                </div>
+                #}
+                {#
+            </div>
+            #}
+            {#
+        </div>
+        #}
+        {# {% endfor %}#}
+        {#
+    </div>
+    #}
+    {#
+</section>#}
 {% endblock %}

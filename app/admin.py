@@ -1,9 +1,9 @@
-from app.models import UserRoleEnum, RentForm, ReserveForm, Receipt, Staff,Room,RoomType,CustomerType, Customer
-from app import app, db
+from app.models import UserRoleEnum, RentForm, ReserveForm, Receipt, Staff,Room, Orderer
+from app import app, db, dao
 from flask_admin import Admin, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_login import logout_user, current_user
-from flask import redirect
+from flask import redirect, request
 
 admin = Admin(app=app, name='QUẢN TRỊ BÁN HÀNG', template_mode='bootstrap4')
 
@@ -19,7 +19,7 @@ class AuthenticatedUser(BaseView):
 
 
 class RentFormView(AuthenticatedAdmin):
-    column_list = ['id', 'checkin_date', 'checkout_date','customers']
+    column_list = ['id','orderer','create_date', 'checkin_date', 'checkout_date','rooms','customers',]
     column_searchable_list = ['id']
     column_filters = ['checkin_date']
     can_export = True
@@ -28,7 +28,8 @@ class RentFormView(AuthenticatedAdmin):
 
 
 class ReserveFormView(AuthenticatedAdmin):
-    column_list = ['id', 'checkin_date', 'checkout_date','customers']
+    column_list = ['id', 'orderer', 'create_date', 'checkin_date', 'checkout_date', 'customers', ]
+
     column_searchable_list = ['id']
     column_filters = ['checkin_date']
     can_export = True
@@ -42,7 +43,7 @@ class StaffView(AuthenticatedAdmin):
     edit_modal = True
 
 class RoomView(AuthenticatedAdmin):
-    column_list = ['id', 'name','room', 'room_type_id']
+    column_list = ['id', 'name','room_type.formatted_price','room_type']
     column_searchable_list = ['id']
     column_filters = ['id']
     can_export = True
@@ -50,14 +51,14 @@ class RoomView(AuthenticatedAdmin):
 
 
 class ReceiptView(AuthenticatedAdmin):
-    column_list = ['id', 'created_date', 'price']
+    column_list = ['id','orderer.name', 'created_date', 'caculate_price']
     column_searchable_list = ['price']
     column_filters = ['price']
     can_export = True
     edit_modal = True
 
-class CustomerView(AuthenticatedAdmin):
-    column_list = ['id', 'name']
+class OrdererView(AuthenticatedAdmin):
+    column_list = ['id', 'name','email','phone']
     column_searchable_list = ['name']
     column_filters = ['name']
     can_export = True
@@ -67,7 +68,14 @@ class CustomerView(AuthenticatedAdmin):
 class MyStatsView(AuthenticatedUser):
     @expose("/")
     def index(self):
-        return self.render('admin/stats.html')
+        month = request.args.get('months')
+
+        # index_selected = month -1
+        revenue = dao.revenue_stats(month)
+        total = sum(item[2] for item in revenue)
+        room_frequency = dao.room_frequency(month)
+
+        return self.render('admin/stats.html',revenue = revenue, total = total,room_frequency=room_frequency )
 
 
 class LogoutView(AuthenticatedUser):
@@ -82,7 +90,7 @@ admin.add_view(RoomView(Room, db.session))
 admin.add_view(RentFormView(RentForm, db.session))
 admin.add_view(ReserveFormView(ReserveForm, db.session))
 admin.add_view(ReceiptView(Receipt, db.session))
-admin.add_view(CustomerView(Customer, db.session))
+admin.add_view(OrdererView(Orderer, db.session))
 
 
 admin.add_view(MyStatsView(name='Thống kê báo cáo'))

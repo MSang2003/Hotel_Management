@@ -1,5 +1,233 @@
 {% extends 'admin/master.html' %}
 
 {% block body %}
-<h1 class="text-center text-info">THỐNG KÊ BÁO CÁO</h1>
+
+<form>
+    <select name="months">
+        <!-- Options của combobox -->
+        <option value="1">Tháng 1</option>
+        <option value="2">Tháng 2</option>
+        <option value="1">Tháng 3</option>
+    </select>
+    <button type="submit" value="Submit">Thống kê</button>
+</form>
+
+<div>
+    <h4>Báo cáo tần xuất sử dụng phòng</h4>
+    <div class="row">
+        <div class="col-md-5 col-xs-12">
+            <table class="table">
+                <tr>
+                    <th>Loại phòng</th>
+                    <th>Doanh thu</th>
+                    <th>Số lượng đặt</th>
+                    <th>Tỉ lệ</th>
+
+                </tr>
+                {% for s in revenue %}
+                <tr>
+                    <td style="white-space: nowrap;">{{s[1]}}</td>
+                    <td style="white-space: nowrap;">{{"{:,.2f}".format(s[2])}} VNĐ</td>
+                    <td style="white-space: nowrap;">{{s[3]}}</td>
+                    <td style="white-space: nowrap;">{{"{:,.0f}".format(s[4])}} %</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>Tổng doanh thu</td>
+                    <td>{{"{:,.2f}".format(total)}} VNĐ</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-7 col-xs-12">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h4>Báo cáo phòng</h4>
+    <div class="row">
+        <div class="col-md-5 col-xs-12">
+            <table class="table">
+                <tr>
+                    <th>Tên phòng</th>
+                    <th>Số lượng đặt</th>
+                    <th>Tỉ lệ</th>
+                </tr>
+                {% for s in room_frequency %}
+                <tr>
+                    <td style="white-space: nowrap;">{{s[0]}}</td>
+                    <td style="white-space: nowrap;">{{s[1]}}</td>
+                    <td style="white-space: nowrap;">{{"{:,.0f}".format(s[2])}} %</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-md-7 col-xs-12">
+            <canvas id="Stats_room_chart"></canvas>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+
+    var labels = []
+    var revenues = []
+    var bookings = []
+     {% for s in revenue %}
+        labels.push('{{s[1]}}')
+        revenues.push('{{s[2]}}')
+        bookings.push('{{s[3]}}')
+     {% endfor %}
+
+    // Tính tổng số lượng phòng và doanh thu
+    var totalBookings = bookings.reduce((total, amount) => total + amount);
+
+    // Tính tỷ lệ phòng được đặt cho từng loại phòng
+    var bookingPercentages = bookings.map(booking => (booking / totalBookings) * 100);
+
+    // Vẽ biểu đồ
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Doanh thu',
+                    data: revenues,
+                    backgroundColor: 'rgba(255, 99, 132, 0.7)'
+                },
+                {
+                    hidden:true,
+                    label: 'Số lượng phòng được đặt',
+                    data: bookings,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                },
+                {
+                    hidden:true,
+                    label: 'Tỉ lệ phòng được đặt (%)',
+                    data: bookingPercentages,
+                    type: 'line',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    yAxisID: 'y-axis-2',
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        id: 'y-axis-1',
+                        type: 'linear',
+                        position: 'left',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    },
+                    {
+                        id: 'y-axis-2',
+                        type: 'linear',
+                        position: 'right',
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 100,
+                            callback: function (value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                ]
+            },
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        }
+    });
+
+
+
+     var ctx = document.getElementById('Stats_room_chart').getContext('2d');
+
+    var room_names = []
+    var bookings = []
+     {% for s in room_frequency %}
+        room_names.push('{{s[0]}}')
+        bookings.push('{{s[1]}}')
+     {% endfor %}
+
+    // Tính tổng số lượng phòng và doanh thu
+    var totalBookings = bookings.reduce((total, amount) => total + amount);
+
+    // Tính tỷ lệ phòng được đặt cho từng loại phòng
+    var bookingPercentages = bookings.map(booking => (booking / totalBookings) * 100);
+
+    // Vẽ biểu đồ
+    var Stats_room_chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: room_names,
+            datasets: [
+                {
+                    label: 'Số lượng phòng được đặt',
+                    data: bookings,
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                },
+                {
+                    hidden:true,
+                    label: 'Tỉ lệ phòng được đặt (%)',
+                    data: bookingPercentages,
+                    type: 'line',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    yAxisID: 'y-axis-2',
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [
+                    {
+                        id: 'y-axis-1',
+                        type: 'linear',
+                        position: 'left',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    },
+                    {
+                        id: 'y-axis-2',
+                        type: 'linear',
+                        position: 'right',
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 100,
+                            callback: function (value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                ]
+            },
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        }
+    });
+
+
+</script>
+
 {% endblock %}

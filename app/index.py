@@ -1,25 +1,46 @@
-import math
-
-from flask import render_template, request, redirect, jsonify, session, url_for
+from flask import render_template, request, redirect, jsonify, session
+from flask_login import login_user
 import dao
 import utils
 from app import app, login
 from flask_login import login_user, current_user
 
 
+# import paypalrestsdk
+
+
 @app.route("/")
 def index():
-    # kw = request.args.get('kw')
-    # cate_id = request.args.get('cate_id')
-    # page = request.args.get('page')
-    #
-    # prods = dao.get_products(kw, cate_id, page)
-    #
-    # num = dao.count_product()
-    # page_size = app.config['PAGE_SIZE']
+    roomtype = request.args.get('roomtype')
+    roomtype = dao.load_roomtype()
+    kw = request.args.get('kw')
+    rooms = dao.get_room(kw)
+    return render_template('index.html', roomtype=roomtype, rooms=rooms)
 
-    return render_template('index.html'
-                           )
+
+@app.route("/index")
+def home():
+    roomtype = request.args.get('roomtype')
+    roomtype = dao.load_roomtype()
+    kw = request.args.get('kw')
+    rooms = dao.get_room(kw)
+    return render_template('index.html', roomtype=roomtype, rooms=rooms)
+
+
+@app.route('/room', methods=['post', 'get'])
+def room():
+    key_room = request.args.get('roomtype')
+    room = dao.load_roomtype()
+
+    kw = request.form.get('kw')
+    rt = dao.load_rooms()
+
+    return render_template('room.html', room=room, rt=rt)
+
+
+@app.route('/room/<id>')
+def product_details(id):
+    return render_template('detail_room.html', room=dao.get_roomtype_by_id(id=id))
 
 
 @app.route('/admin/login', methods=['post'])
@@ -124,27 +145,20 @@ def pay():
     return jsonify({'status': 500, 'err_msg': 'Something wrong!'})
 
 
-@app.route('/room')
-def room():
-    return render_template('room.html')
-
-
-@app.route('/booking')
+@app.route('/booking', methods=['get', 'post'])
 def booking():
-    kw = request.args.get('kw')
+    key_room = request.args.get('roomtype')
+    room = dao.load_roomtype()
+    if request.method.__eq__('POST'):
+        try:
+            dao.add_orderer(name=request.form.get('name'),
+                            email=request.form.get('email'),
+                            phone=request.form.get('phone'), checkin=request.form.get('checkin'),
+                            checkout=request.form.get('checkout'))
+        except Exception as ex:
+            print(str(ex))
 
-
-    rooms = dao.get_products(kw, cate_id, page)
-
-    num = dao.count_product()
-
-    return render_template('booking.html',products=products)
-
-
-@app.route('/room/<id>')
-def detail_room():
-    return render_template('detail_room.html',room = dao.get_user_by_id(id))
-
+    return render_template('booking.html', room=room)
 
 
 @app.route('/service')
@@ -165,17 +179,66 @@ def load_user(user_id):
     return dao.get_user_by_id(user_id)
 
 
-# @app.route('/room')
-# def room():
-#     pass
-    # kw = request.args.get('kw')
-    #
-    # products = dao.get_products(kw)
-    #
-    # return render_template('room.html',products = products)
+# @app.route('/payment', methods=['POST'])
+# def payment():
+#
+#     amount = request.form['amount']
+#     description = request.form['description']
+#
+#     # Tạo thanh toán PayPal
+#     payment = paypalrestsdk.Payment({
+#         "intent": "sale",
+#         "payer": {
+#             "payment_method": "paypal"
+#         },
+#         "redirect_urls": {
+#             "return_url": "http://localhost:5000/payment-success",
+#             "cancel_url": "http://localhost:5000/cancel"
+#         },
+#         "transactions": [{
+#             "item_list": {
+#                 "items": [{
+#                     "name": "Item",
+#                     "sku": "item",
+#                     "price": amount,
+#                     "currency": "USD",
+#                     "quantity": 1
+#                 }]
+#             },
+#             "amount": {
+#                 "total": amount,
+#                 "currency": "USD"
+#             },
+#             "description": description
+#         }]
+#     })
+#
+#     if payment.create():
+#         for link in payment.links:
+#             if link.method == "REDIRECT":
+#                 redirect_url = str(link.href)
+#                 return redirect(redirect_url)
+#     else:
+#         return "Error during payment creation"
+
+
+# @app.route('/', methods=['POST'])
+# def stats_month():
+#
+#     month=request.form['months']
+#     revenue = dao.revenue_stats(month)
+#     total = sum(item[2] for item in revenue)
+#
+#     room_frequency = dao.room_frequency(month)
+#
+#     return render_template('admin/stats.html', revenue=revenue, total=total, room_frequency=room_frequency)
 
 
 if __name__ == '__main__':
-    from app import admin
+    with app.app_context():
+        from app import admin
 
-    app.run(debug=True)
+        # dao.revenue_stats(1)
+        # dao.revenue_mon_stats()
+        # dao.room_frequency(1)
+        app.run(debug=True)
