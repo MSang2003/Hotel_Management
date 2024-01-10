@@ -1,10 +1,8 @@
 {% extends 'admin/master.html' %}
-
 {% block body %}
 
 <form>
     <select name="months">
-        <!-- Options của combobox -->
         <option value="1">Tháng 1</option>
         <option value="2">Tháng 2</option>
         <option value="1">Tháng 3</option>
@@ -41,7 +39,7 @@
             </table>
         </div>
         <div class="col-md-7 col-xs-12">
-            <canvas id="myChart"></canvas>
+            <canvas id="revenue_chart"></canvas>
         </div>
     </div>
 </div>
@@ -71,11 +69,9 @@
     </div>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('revenue_chart').getContext('2d');
 
     var labels = []
     var revenues = []
@@ -86,25 +82,22 @@
         bookings.push('{{s[3]}}')
      {% endfor %}
 
-    // Tính tổng số lượng phòng và doanh thu
     var totalBookings = bookings.reduce((total, amount) => total + amount);
 
-    // Tính tỷ lệ phòng được đặt cho từng loại phòng
     var bookingPercentages = bookings.map(booking => (booking / totalBookings) * 100);
 
-    // Vẽ biểu đồ
-    var myChart = new Chart(ctx, {
+    var revenue_chart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: labels,
             datasets: [
                 {
+                    hidden:true,
                     label: 'Doanh thu',
                     data: revenues,
                     backgroundColor: 'rgba(255, 99, 132, 0.7)'
                 },
                 {
-                    hidden:true,
                     label: 'Số lượng phòng được đặt',
                     data: bookings,
                     backgroundColor: 'rgba(54, 162, 235, 0.7)'
@@ -153,11 +146,11 @@
             }
         }
     });
+    
+<!--    Chart2   -->
 
-
-
-     var ctx = document.getElementById('Stats_room_chart').getContext('2d');
-
+    var ctx = document.getElementById('Stats_room_chart').getContext('2d');
+     
     var room_names = []
     var bookings = []
      {% for s in room_frequency %}
@@ -165,13 +158,10 @@
         bookings.push('{{s[1]}}')
      {% endfor %}
 
-    // Tính tổng số lượng phòng và doanh thu
     var totalBookings = bookings.reduce((total, amount) => total + amount);
 
-    // Tính tỷ lệ phòng được đặt cho từng loại phòng
     var bookingPercentages = bookings.map(booking => (booking / totalBookings) * 100);
 
-    // Vẽ biểu đồ
     var Stats_room_chart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -226,8 +216,6 @@
             }
         }
     });
-
-
 </script>
 
 {% endblock %}

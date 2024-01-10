@@ -58,12 +58,6 @@ def load_roomtype():
     roomtype = RoomType.query.all()
     return roomtype
 
-
-def count_product():
-    pass
-    # return Product.query.count()
-
-
 def get_user_by_id(user_id):
     return User.query.get(user_id)
 

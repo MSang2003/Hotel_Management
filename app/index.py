@@ -55,9 +55,7 @@ def admin_login():
     return redirect('/admin/staff')
 
 
-@app.route('/cart')
-def cart():
-    return render_template('cart.html')
+
 
 
 @app.route('/api/cart', methods=['post'])
@@ -222,23 +220,9 @@ def load_user(user_id):
 #         return "Error during payment creation"
 
 
-# @app.route('/', methods=['POST'])
-# def stats_month():
-#
-#     month=request.form['months']
-#     revenue = dao.revenue_stats(month)
-#     total = sum(item[2] for item in revenue)
-#
-#     room_frequency = dao.room_frequency(month)
-#
-#     return render_template('admin/stats.html', revenue=revenue, total=total, room_frequency=room_frequency)
-
 
 if __name__ == '__main__':
     with app.app_context():
         from app import admin
 
-        # dao.revenue_stats(1)
-        # dao.revenue_mon_stats()
-        # dao.room_frequency(1)
         app.run(debug=True)

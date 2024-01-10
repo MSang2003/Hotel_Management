@@ -19,7 +19,6 @@ class CustomerType(db.Model):
     value = Column(Float, nullable=False)
     customers = relationship('Customer', backref='customer_type', lazy=True)
 
-
     def __str__(self):
         return self.type
 
@@ -43,11 +42,9 @@ class RoomType(db.Model):
 
     rooms = relationship('Room', backref='room_type', lazy=True)
 
-
     @property
     def formatted_price(self):
         return f'{self.price:,} VND'
-
 
     def __str__(self):
         return self.type
@@ -73,7 +70,6 @@ class Orderer(db.Model):
     rent_form = relationship('RentForm', backref='orderer', lazy=True)
     reserve_form = relationship('ReserveForm', backref='orderer', lazy=True)
     receipt = relationship('Receipt', backref='orderer', lazy=True)
-
 
     def __str__(self):
         return self.name
@@ -120,14 +116,13 @@ class ReserveForm(BaseForm):
 class Room(db.Model):
     __tablename__ = 'room'
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), nullable=False, unique=True, default='Phong ABC')
-    status = Column(Boolean,nullable=True,default=True)
+    name = Column(String(50), nullable=False, unique=True)
+    status = Column(Boolean, nullable=True, default=True)
     room_type_id = Column(Integer, ForeignKey(RoomType.id), nullable=False)
-
-
 
     def __str__(self):
         return self.name
+
 
 class Customer(BaseUser):
     __tablename__ = 'customer'
@@ -159,14 +154,11 @@ class Receipt(db.Model):
     staff_id = Column(Integer, ForeignKey(Staff.id), nullable=False, default=1)
     rent_form_id = Column(Integer, ForeignKey(RentForm.id), nullable=False, default=1)
     extra_fee_id = Column(Integer, ForeignKey(ExtraFee.id), nullable=True)
-    orderer_id = Column(Integer, ForeignKey(Orderer.id), nullable=True,default=1)
+    orderer_id = Column(Integer, ForeignKey(Orderer.id), nullable=True, default=1)
 
     @property
     def caculate_price(self):
-            if self.extra_fee_id:
-                return    f'{self.price*1,25:,} VND'
-            else:
-                return    f'{self.price:,} VND'
+            return f'{self.price:,} VND'
 
 class User(db.Model, UserMixin):
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -277,17 +269,15 @@ if __name__ == '__main__':
         #
         # db.session.commit()
 
-
-
         # receipt = Receipt(staff_id=2)
         # db.session.add_all([receipt])
         # db.session.commit()
 
-        rent1 = RentForm.query.get(1)
-        room1 = Room.query.get(1)
-        room2 = Room.query.get(2)
-        rent1.rooms.append(room1)
-        rent1.rooms.append(room2)
-
-        db.session.add((rent1))
-        db.session.commit()
+        # rent1 = RentForm.query.get(1)
+        # room1 = Room.query.get(1)
+        # room2 = Room.query.get(2)
+        # rent1.rooms.append(room1)
+        # rent1.rooms.append(room2)
+        #
+        # db.session.add((rent1))
+        # db.session.commit()
